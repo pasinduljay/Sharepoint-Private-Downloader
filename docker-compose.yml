@@ -1,0 +1,39 @@
+services:
+
+  frontend:
+    build: .
+    container_name: frontend
+    volumes:
+      - /home/ubuntu/volume/downloads:/downloads"
+    networks:
+      - proxy
+    restart: unless-stopped
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    volumes:
+      - /home/ubuntu/volume/downloads:/srv"
+    networks:
+      - proxy
+    restart: unless-stopped
+
+  nginx-proxy-manager:
+    image: pasinduljay/nginx-proxy-manager:1.1
+    container_name: nginx-proxy-manager
+    environment:
+      DB_SQLITE_FILE: "/data/database.sqlite"
+    volumes:
+      - /home/ubuntu/volume/config/nginx/data:/data
+      - /home/ubuntu/volume/config/nginx/letsencrypt:/etc/letsencrypt
+    ports:
+      - '80:80'   # HTTP
+      - '443:443' # HTTPS
+      - '81:81'   # Management Interface
+    networks:
+      - proxy
+    restart: unless-stopped
+
+networks:
+  proxy:
+    driver: bridge
