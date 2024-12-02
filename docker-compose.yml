@@ -4,7 +4,7 @@ services:
     build: .
     container_name: frontend
     volumes:
-      - ./downloads:/srv"
+      - /home/ubuntu/volume/downloads:/downloads"
     networks:
       - proxy
     restart: unless-stopped
@@ -13,7 +13,7 @@ services:
     image: filebrowser/filebrowser
     container_name: filebrowser
     volumes:
-      - ./downloads:/srv"
+      - /home/ubuntu/volume/downloads:/srv"
     networks:
       - proxy
     restart: unless-stopped
