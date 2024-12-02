@@ -7,7 +7,7 @@ import time
 app = Flask(__name__)
 
 # Directory paths
-download_path = "/home/ubuntu/volume/downloads"
+download_path = "/downloads"
 incompleted_path = f"{download_path}/incompleted"
 completed_path = f"{download_path}/completed"
 
