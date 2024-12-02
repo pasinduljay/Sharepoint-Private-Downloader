@@ -28,7 +28,6 @@ jobs:
         username: ${{ env.USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          mkdir -p /home/ubuntu/Sharepoint-Downloader && cd /home/ubuntu/Sharepoint-Downloader
           sudo rm -rf Sharepoint-Private-Downloader
           git clone https://${{ env.GITHUB_USERNAME }}:${{ env.GITHUB_TOKEN }}@github.com/pasinduljay/Sharepoint-Private-Downloader.git
           cd Sharepoint-Private-Downloader
