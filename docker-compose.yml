@@ -5,8 +5,6 @@ services:
     container_name: frontend
     volumes:
       - /home/ubuntu/volume/downloads:/downloads
-    ports:
-      - '5000:5000'
     networks:
       - proxy
     restart: unless-stopped
@@ -16,8 +14,6 @@ services:
     container_name: filebrowser
     volumes:
       - /home/ubuntu/volume/downloads:/srv
-    ports:
-      - '8080:80'
     networks:
       - proxy
     restart: unless-stopped
